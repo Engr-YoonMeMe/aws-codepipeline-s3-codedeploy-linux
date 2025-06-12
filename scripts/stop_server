@@ -1,14 +1,5 @@
 #!/bin/bash
-
-# = sign ရဲ့ ဘေးမှာ space မခြားပါနဲ့
-isExistApp=$(pgrep httpd) 
-
-if [[ -n $isExistApp ]]; then
-    # Apache service ကို ရပ်ပါ။
-    sudo systemctl stop httpd  # systemctl ကို သုံးတာက service command ထက် ပိုပြီး ခေတ်မီပြီး စနစ်တကျ ရှိပါတယ်။
-else
-    echo "Apache (httpd) process is not running. No need to stop."
+isExistApp = `pgrep httpd`
+if [[ -n  $isExistApp ]]; then
+    service httpd stop        
 fi
-
-# script က အမြဲတမ်း success status နဲ့ ပြန်ထွက်ဖို့
-exit 0
